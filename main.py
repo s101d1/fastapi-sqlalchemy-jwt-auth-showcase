@@ -35,7 +35,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.exception_handler(RequestValidationError)
-async def validation_exception_handler(_request, exc):
+async def request_validation_exception_handler(_request, exc):
     """
         Reformat RequestValidationError json response with message field on top
     """
@@ -44,7 +44,7 @@ async def validation_exception_handler(_request, exc):
 
 
 @app.exception_handler(ResponseValidationError)
-async def validation_exception_handler(_request, exc):
+async def response_validation_exception_handler(_request, exc):
     """
         Reformat ResponseValidationError json response with message field on top
     """
