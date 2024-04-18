@@ -8,6 +8,8 @@ JWT authentication is handled by [python-jose](https://pypi.org/project/python-j
 
 The caching is handled by [cachetools](https://pypi.org/project/cachetools/) library.
 
+The payload size limiter is handled by [content-size-limit-asgi](https://github.com/steinnes/content-size-limit-asgi) middleware library.
+
 ## <b> Getting Started </b>
 
 ### Requirements
@@ -15,7 +17,7 @@ The caching is handled by [cachetools](https://pypi.org/project/cachetools/) lib
 * Python v3.10.x or newer.
 * MySQL database v8.0 or newer with an empty database/schema prepared.
 
-### How to run the app
+### How to install the app
 
 * Initialize and activate virtual environment inside the project folder:
     ```bash
@@ -30,6 +32,13 @@ The caching is handled by [cachetools](https://pypi.org/project/cachetools/) lib
 
 * Modify the `DB_URL` environment variable in `.env` file according to your database.
 
+### How to run the app
+
+* Activate the virtual environment if you haven't already:
+    ```bash
+    $ . venv/bin/activate
+    ```
+
 * Run the server:
     ```bash
     $ uvicorn main:app --reload
@@ -40,7 +49,7 @@ The caching is handled by [cachetools](https://pypi.org/project/cachetools/) lib
 
     The tables in database will be created automatically if they don't exist yet when the server starts or reloaded.
 
-## Endpoints information
+## API Endpoints Information
 
 1. `POST /auth/signup` (Signup endpoint)
    * Accepts `email`, `password`, and `confirm_password` values.
@@ -63,3 +72,5 @@ The caching is handled by [cachetools](https://pypi.org/project/cachetools/) lib
 5. `DELETE /posts/:id` (Delete Post endpoint)
    * Endpoint is protected by JWT authentication (`Bearer <token>` header is required).
    * Deletes a Post by the id that belongs to the authenticated User.
+
+The API endpoint's request parameter and response body details can be seen in the swagger API docs (http://localhost:8000/docs)
